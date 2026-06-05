@@ -1,16 +1,22 @@
-# CS Calculator
+# Credit Score Calculator
 
-A command-line calculator written in C that performs common mathematical operations through a simple menu-driven interface.
+A C-based command-line application that estimates a user's credit score based on common credit factors such as payment history, credit utilization, account age, credit mix, and recent credit inquiries.
 
 ## Features
 
-* Addition
-* Subtraction
-* Multiplication
-* Division
-* User-friendly menu system
-* Input validation for mathematical operations
-* Lightweight and fast execution
+* Calculates an estimated credit score
+* User-friendly menu interface
+* Accepts multiple credit-related inputs
+* Provides credit score category feedback
+* Fast and lightweight command-line execution
+
+## Credit Factors Considered
+
+* Payment History
+* Credit Utilization Ratio
+* Length of Credit History
+* Credit Mix
+* New Credit Inquiries
 
 ## Technologies Used
 
@@ -32,7 +38,7 @@ A command-line calculator written in C that performs common mathematical operati
 git clone https://github.com/rusmallari/CS-Calculator.git
 ```
 
-2. Navigate to the project directory:
+2. Navigate to the project folder:
 
 ```bash
 cd CS-Calculator
@@ -41,67 +47,69 @@ cd CS-Calculator
 3. Compile the program:
 
 ```bash
-gcc calculator.c -o calculator
+gcc credit_score_calculator.c -o credit_calculator
 ```
 
-4. Run the executable:
+4. Run the application:
 
 ```bash
-./calculator
+./credit_calculator
 ```
 
 For Windows:
 
 ```bash
-calculator.exe
+credit_calculator.exe
 ```
 
 ## Example
 
 ```text
-===== CS Calculator =====
+===== Credit Score Calculator =====
 
-1. Addition
-2. Subtraction
-3. Multiplication
-4. Division
-5. Exit
+Enter Payment History Score (0-100): 95
+Enter Credit Utilization (%): 20
+Enter Length of Credit History (Years): 5
+Enter Number of Credit Accounts: 4
+Enter Recent Credit Inquiries: 1
 
-Enter your choice: 1
+Estimated Credit Score: 742
 
-Enter first number: 10
-Enter second number: 5
-
-Result: 15
+Credit Rating: Very Good
 ```
 
 ## Learning Objectives
 
-This project was developed to strengthen understanding of:
+This project was developed to strengthen knowledge of:
 
-* C programming fundamentals
-* Functions and modular programming
-* User input handling
-* Conditional statements
-* Loops and program flow
-* Problem-solving and algorithm design
+* C Programming
+* Functions and Modular Design
+* User Input Validation
+* Conditional Logic
+* Financial Data Processing
+* Algorithm Design
 
 ## Future Improvements
 
-* Scientific calculator functions
-* History tracking
-* Error handling enhancements
-* Graphical user interface (GUI)
-* Support for advanced mathematical operations
+* More accurate FICO-style calculations
+* Graphical User Interface (GUI)
+* Credit improvement recommendations
+* Score history tracking
+* Data export functionality
 
 ## Author
 
 **Russel Mallari**
 
-Aspiring Software Engineer and Cybersecurity Professional
+Aspiring Software Engineer & Cybersecurity Professional
 
 GitHub: https://github.com/rusmallari
+
+## Disclaimer
+
+This calculator provides educational estimates only and does not represent an official FICO® or VantageScore® credit score.
 
 ## License
 
 This project is open source and available under the MIT License.
+
