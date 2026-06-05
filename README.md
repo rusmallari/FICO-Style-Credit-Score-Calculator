@@ -97,14 +97,6 @@ This project was developed to strengthen knowledge of:
 * Score history tracking
 * Data export functionality
 
-## Author
-
-**Russel Mallari**
-
-Aspiring Software Engineer & Cybersecurity Professional
-
-GitHub: https://github.com/rusmallari
-
 ## Disclaimer
 
 This calculator provides educational estimates only and does not represent an official FICO® or VantageScore® credit score.
