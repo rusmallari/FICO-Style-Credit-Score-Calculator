@@ -2,9 +2,8 @@ import math
 
 def calculate_fico_score():
     try:
-        # ---------------------------
-        # INPUTS
-        # ---------------------------
+        
+        # USER INPUTS
         on_time_payments = int(on_time_payments_entry.get())
         total_payments = int(total_payments_entry.get())
 
@@ -14,9 +13,7 @@ def calculate_fico_score():
         length_of_credit = float(length_of_credit_entry.get())
         inquiries = int(new_credit_entry.get())
 
-        # ---------------------------
-        # VALIDATION
-        # ---------------------------
+        # VALIDATION / ERROR HANDLING
         if total_payments <= 0 or total_credit_limit <= 0:
             messagebox.showerror("Error", "Invalid inputs.")
             return
@@ -25,9 +22,7 @@ def calculate_fico_score():
 
         credit_utilization = (total_credit_used / total_credit_limit) * 100
 
-        # ---------------------------
         # 1. PAYMENT HISTORY (35%) — heavily penalty-based
-        # ---------------------------
         if missed_payments == 0:
             payment_score = 100
         elif missed_payments == 1:
@@ -37,9 +32,7 @@ def calculate_fico_score():
         else:
             payment_score = 40
 
-        # ---------------------------
-        # 2. CREDIT UTILIZATION (30%) — threshold-based (VERY IMPORTANT)
-        # ---------------------------
+        # 2. CREDIT UTILIZATION (30%) — threshold-based
         if credit_utilization <= 10:
             util_score = 100
         elif credit_utilization <= 30:
@@ -51,14 +44,10 @@ def calculate_fico_score():
         else:
             util_score = 10
 
-        # ---------------------------
         # 3. LENGTH OF CREDIT (15%) — diminishing returns
-        # ---------------------------
         length_score = min(math.log1p(length_of_credit) * 35, 100)
 
-        # ---------------------------
         # 4. HARD INQUIRIES (20%) — decay style penalty
-        # ---------------------------
         if inquiries == 0:
             inquiry_score = 100
         elif inquiries == 1:
@@ -70,9 +59,7 @@ def calculate_fico_score():
         else:
             inquiry_score = 25
 
-        # ---------------------------
         # WEIGHTED COMBINATION
-        # ---------------------------
         base_score = (
             payment_score * 0.35 +
             util_score * 0.30 +
@@ -80,16 +67,11 @@ def calculate_fico_score():
             inquiry_score * 0.20
         )
 
-        # ---------------------------
         # NON-LINEAR FICO-LIKE MAPPING
-        # (this is what makes it feel real)
-        # ---------------------------
         score = 300 + (math.pow(base_score, 1.15) / math.pow(100, 1.15)) * 550
         score = max(300, min(int(score), 850))
 
-        # ---------------------------
-        # RATING
-        # ---------------------------
+        # Credit Score Outcome
         if score >= 750:
             rating = "Excellent"
         elif score >= 700:
