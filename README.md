@@ -1,105 +1,81 @@
-# Credit Score Calculator
+# FICO Credit Score Estimator
 
-A C-based command-line application that estimates a user's credit score based on common credit factors such as payment history, credit utilization, account age, credit mix, and recent credit inquiries.
+An interactive web-based credit score estimator built with vanilla HTML, CSS, and JavaScript. Enter your financial details and get an estimated FICO score with a full breakdown of each contributing factor.
+
+**Live demo:** [rusmallari.github.io/CS-Calculator](https://rusmallari.github.io/CS-Calculator)
+
+---
 
 ## Features
 
-* Calculates an estimated credit score
-* User-friendly menu interface
-* Accepts multiple credit-related inputs
-* Provides credit score category feedback
-* Fast and lightweight command-line execution
+- **Dynamic account input** — add multiple credit cards, car loans, student loans, mortgages, and personal loans; only include what applies to you
+- **Per-factor score breakdown** — see exactly how payment history, utilization, history length, credit mix, and new inquiries contribute to your score
+- **Realistic scoring model** — tiered utilization penalties, logarithmic history curve, late payment recency weighting, derogatory mark caps, and installment loan softening
+- **Improvement tips** — personalized advice based on your result
+- **How to fill this out guide** — plain-English instructions for every input field
+- **FAQ section** — answers to common credit score questions
+- **Fully responsive** — works on mobile and desktop
 
-## Credit Factors Considered
+---
 
-* Payment History
-* Credit Utilization Ratio
-* Length of Credit History
-* Credit Mix
-* New Credit Inquiries
+## How It Works
 
-## Technologies Used
+The estimator uses FICO's publicly documented weighting model:
 
-* C Programming Language
-* GCC Compiler
+| Factor | Weight |
+|--------|--------|
+| Payment history | 35% |
+| Credit utilization | 30% |
+| Length of credit history | 15% |
+| Credit mix | 10% |
+| New inquiries | 10% |
 
-## Getting Started
+### Scoring details
 
-### Prerequisites
+**Payment history** is calculated from the ratio of on-time payments to total scheduled payments across all accounts, then adjusted based on the recency of any late payments. Recent late payments are penalized more heavily than older ones.
 
-* GCC Compiler
-* Terminal or Command Prompt
+**Credit utilization** uses a tiered curve rather than a linear penalty — utilization under 9% scores perfectly, with progressively steeper penalties above 30% and 50%. Accounts with installment loans receive a softened utilization penalty, reflecting real FICO's more lenient treatment of borrowers with diverse credit types.
 
-### Installation
+**History length** uses a logarithmic curve so early years of credit history are rewarded significantly, with diminishing but continued returns past 20 years. There is no hard cap.
 
-1. Clone the repository:
+**Credit mix** rewards having both revolving credit (cards) and installment loans (car, student, mortgage) active simultaneously.
+
+**New inquiries** deduct points per hard inquiry in the past 12 months, with a floor of 0.
+
+**Derogatory marks** apply hard score caps — collections cap the score at 720, bankruptcy at 650, regardless of other factors.
+
+The weighted composite is then scaled to the 300–850 FICO range.
+
+---
+
+## Usage
+
+No installation or build step required. Open `index.html` directly in any browser, or visit the live GitHub Pages deployment.
 
 ```bash
+# Clone the repo
 git clone https://github.com/rusmallari/CS-Calculator.git
-```
-
-2. Navigate to the project folder:
-
-```bash
 cd CS-Calculator
+
+# Open in browser
+open index.html
 ```
 
-3. Compile the program:
-
-```bash
-gcc credit_score_calculator.c -o credit_calculator
-```
-
-4. Run the application:
-
-```bash
-./credit_calculator
-```
-
-For Windows:
-
-```bash
-credit_calculator.exe
-```
-
-## Example
-
-```text
-===== Credit Score Calculator =====
-
-Enter Payment History Score (0-100): 95
-Enter Credit Utilization (%): 20
-Enter Length of Credit History (Years): 5
-Enter Number of Credit Accounts: 4
-Enter Recent Credit Inquiries: 1
-
-Estimated Credit Score: 742
-
-Credit Rating: Very Good
-```
-
-## Learning Objectives
-
-This project was developed to strengthen knowledge of:
-
-* C Programming
-* Functions and Modular Design
-* User Input Validation
-* Conditional Logic
-* Financial Data Processing
-* Algorithm Design
-
-## Future Improvements
-
-* More accurate FICO-style calculations
-* Graphical User Interface (GUI)
-* Credit improvement recommendations
-* Score history tracking
-* Data export functionality
+---
 
 ## Disclaimer
 
-This calculator provides educational estimates only and does not represent an official FICO® or VantageScore® credit score.
+This tool is for **educational purposes only**. It is not affiliated with or endorsed by FICO, Equifax, Experian, or TransUnion. Actual credit scores are calculated by credit bureaus using proprietary models with additional data points not captured here. Do not use this as a substitute for your official credit report.
+
+---
+
+## Tech Stack
+
+- HTML5
+- CSS3 (custom properties, CSS Grid, animations)
+- Vanilla JavaScript (no frameworks or dependencies)
+
+---
 
 ## License
 
